@@ -50,11 +50,18 @@ public class Main {
             for (Element playerLink : playerLinks) {
                 final String href = playerLink.attr("href");
                 final String mediaLink = mediaLink(href);
-                System.out.println("wget " + mediaLink + " -O '" + getTitle(playerLink) + ".mp3'");
+                final String title = getTitle(playerLink);
+                System.out.println("wget " + mediaLink + " -O '" + escapeFilename(title + ".mp3") + "'");
             }
             offset += 10;// strankovac je po deseti
         } while (!doc.select("a#sipka_right").isEmpty());
 
+    }
+
+    private static String escapeFilename(String title) {
+        return title.replaceAll(":", ".")
+                // nekdy je v titulku tecka, nekdy ne
+                .replaceAll("\\.\\.mp3", ".mp3");
     }
 
     private static String getTitle(Element playerLink) {
