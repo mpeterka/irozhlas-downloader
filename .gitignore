@@ -25,3 +25,10 @@ hs_err_pid*
 #IDEA
 *.iml
 .idea/
+
+# skripty
+*.bat
+*.sh
+
+# data
+audio/
