@@ -38,6 +38,9 @@ public class Main {
         }
 
         String baseUrl = args[0];
+        if (baseUrl.contains("offset=")) {
+            throw new IllegalArgumentException("Parametr offset sem nedávajte " + baseUrl);
+        }
         int offset = 0;
 
         Document doc;
