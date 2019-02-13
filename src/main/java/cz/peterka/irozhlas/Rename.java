@@ -34,10 +34,10 @@ public class Rename {
         result = StringUtils.stripAccents(result);
         result =
                 result.replaceAll("\uF022", "_")
-//                        .replaceAll("„", "\"")
-//                        .replaceAll("“", "\"")
-//                        .replaceAll(":", ".")
-//                        .replaceAll("'", "_")
+                        .replaceAll("„", "\"")
+                        .replaceAll("“", "\"")
+                        .replaceAll(":", ".")
+                        .replaceAll("'", "_")
                         .replaceAll("..mp3", ".mp3")
                 ;
         int length = maxLength;
