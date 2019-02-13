@@ -53,24 +53,10 @@ public class Main {
                 final String href = playerLink.attr("href");
                 final String mediaLink = mediaLink(href);
                 final String title = getTitle(playerLink);
-                System.out.println("wget " + mediaLink + " -O '" + fixFilename(title) + ".mp3'");
+                System.out.println("wget " + mediaLink + " -O '" + Rename.fixFilenameLength(title + ".mp3", 250) + "'");
             }
             offset += 10;// strankovac je po deseti
         } while (!doc.select("a#sipka_right").isEmpty());
-
-    }
-
-    private static String fixFilename(String title) {
-        title = title
-                .replaceAll(":", ".");
-        if (title.contains(", prokládá")) {
-            title = StringUtils.substringAfter(title, ", prokládá");
-        }
-        if (title.contains(", prokládal")) {
-            title = StringUtils.substringAfter(title, ", prokládal");
-        }
-        title = StringUtils.abbreviate(title, "...", 0, 255);
-        return title;
 
     }
 
