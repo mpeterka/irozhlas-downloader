@@ -1,6 +1,7 @@
 package cz.peterka.irozhlas;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
@@ -9,7 +10,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.jsoup.Jsoup;
-import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -61,7 +61,7 @@ public class Main {
     private static String getTitle(Element playerLink) {
         final Element parent = playerLink.parent().parent().parent();
         final String simple = parent.select(".title").text();
-        if (!StringUtil.isBlank(simple)) {
+        if (!StringUtils.isBlank(simple)) {
             return simple;
         }
         return parent.select(".dateCover").text() + " " + parent.select("h3").text();
